@@ -1,0 +1,94 @@
+<link type="text/css" href="./Public/css/style.css" rel="stylesheet"/>
+<?php $peizhi = new Model('config');
+                   $peizhiinfo = $peizhi->limit(1)->select()[0];
+?>
+<meta name="keywords" content="<?=$peizhiinfo['keywords']?>>">
+</head>
+<body>
+
+<!--顶部登录s-->
+<div id="top_login">
+    <div class="container">
+        <a href="./index.php?c=index&a=index" style="float:left;padding:20px 0px ">
+            <img src="../Admin/Public/upload/<?=$peizhiinfo['logo']?>" width="">
+        </a>
+        <img src="./Public/images/nobrother.jpg">
+        <?php
+			//判断SESSION中的uid是否存在
+			if(!isset($_SESSION['uid'])){
+
+			?>
+        <div style="float:right;width:300px;padding:20px 0px 0px 0px">
+            <div style="font-size: 12px;">
+                <form action="./index.php?c=login&a=doLogin" method="post">
+                    <input  type="text" name="userName" placeholder="用户名" >
+                    &nbsp;&nbsp;记住登录&nbsp;&nbsp;找回密码
+            </div>
+            <div style="font-size:12px;margin-top: 5px;">
+                <input type="password" name="password" placeholder="密码">&nbsp;&nbsp;
+                <input type="submit" class="button button-silver" value="登录">
+                </form>
+                <a href="./index.php?c=register&a=index"><button class="button button-orange">注册</button></a>
+            </div>
+        </div>
+        <?php
+			}else{
+				//获取当前登陆者的信息
+				$ud = new Model('userdetail');
+				$info = $ud->where('uid='.$_SESSION['uid'])->select();
+        ?>
+        <?php
+        function level($score)
+        {
+        $arr = array(
+        300 => "连长",
+        200 => "排长",
+        50 =>"教官",
+        0 => "新兵");
+
+        foreach ($arr as $key => $value)
+        {
+        if ($score >= $key)
+        {
+        return $value;
+        }
+        }
+        }
+        ?>
+        <div style="float:right;width:350px;">
+            <table  width='350' style="margin-top:20px;font-size: 12px;;">
+                <tr align='center'>
+                    <td><?= isset($info[0]['nickName'])?$info[0]['nickName']:'游客' ?></td>
+                    <td><a href='./index.php?c=login&a=doLogout' class="blue">退出</a></td>
+                    <td>消息(2)</td>
+                    <td><a href='./index.php?c=center&a=index' class="blue">个人中心</a></td>
+                    <td rowspan='2'><a href="./index.php?c=center&a=photo" ><img width='50' src="./Public/upload/<?= $info[0]['photo'] ?>" /></a></td>
+                </tr>
+                <tr align='center'>
+                    <td>积分</td>
+                    <td style="color:#075992"><b><?=$info[0]['score']?></b></td>
+                    <td>等级</td>
+                    <td style="color:#075992"><b><?php echo level(7000);?></b></td>
+                </tr>
+            </table>
+        </div>
+        <?php
+			}
+		?>
+    </div>
+</div>
+<!--顶部登录e-->
+<!--导航栏s-->
+<div id="nav">
+    <div class="container">
+        <ul class="nav_ul">
+            <a class="nav" href=""><li class="nav_li">培训课程</li></a>
+            <a class="nav" href=""><li class="nav_li nav_current">论坛</li></a>
+            <a class="nav" href=""><li class="nav_li">Linux视频</li></a>
+            <a class="nav" href=""><li class="nav_li">战地日记</li></a>
+            <li style="float: right" class="nav_li"><img src="./Public/images/fastroad.jpg" ></li>
+        </ul>
+
+    </div>
+</div>
+<!--导航栏e-->

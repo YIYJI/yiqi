@@ -1,0 +1,97 @@
+<!--顶部条-->
+		<div id="top">
+			<div class="middlediv">
+				<ul id="leftnav">
+					<li><a href="#">设为首页</a></li>
+					<li><a href="#">收藏LAMP兄弟连</a></li>
+				</ul>
+				<ul id="rightnav">
+					<li><a href="#">|帮助</a></li>
+					<li><a href="#">推广链接</a></li>
+					<li><a href="#">社区应用</a></li>
+					<li><a href="#">最新帖子</a></li>
+					<li><a href="#">精华区</a></li>
+					<li><a href="#">社区服务</a></li>
+					<li><a href="#">会员列表</a></li>
+					<li><a href="#">统计排行</a></li>
+					<li><a href="#">搜索</a></li>
+				</ul>
+			</div>
+		</div>
+		<!--顶部条结束-->
+		
+		<!--header头-->
+		<div id="header">
+			<div id="logo">
+				<a href='./index.php?c=index&a=index'><img src="./Public/images/logo.jpg"/></a>
+			</div>
+			<div id="nobrother">
+				<img src="./Public/images/nobrother.jpg"/>
+			</div>
+			<?php 
+				//判断SESSION中的uid是否存在
+				if(!isset($_SESSION['uid'])){
+
+			?>
+			<div id="login">
+				<form action="./index.php?c=login&a=doLogin" method="post">
+					<table>
+						<tr>
+							<td><input type="text" name="userName" placeholder="输入用户名"/></td>
+							<td><input type="checkbox" name=""/>记住密码</td>
+							<td><a href="#"/>找回密码</a></td>
+						</tr>
+						<tr>
+							<td><input type="password" name="password" placeholder=""/></td>
+							<td><input type="submit" value="登陆"/></td>
+							<td><a href="./index.php?c=register&a=index"><input type="button" value="注册"/></a></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+			<?php 
+				}else{ 
+					//获取当前登陆者的信息
+					$ud = new Model('userdetail');
+					$info = $ud->where('uid='.$_SESSION['uid'])->select();
+			?>
+			<div id="login">
+				<table border='1' width='350' style="margin-top:-10px;">
+					<tr align='center'>
+						<td><?= isset($info[0]['nickName'])?$info[0]['nickName']:'游客' ?></td>
+						<td><a href='./index.php?c=login&a=doLogout'>退出</a></td>
+						<td>消息(2)</td>
+						<td><a href='./index.php?c=center&a=index'>个人中心</a></td>
+						<td rowspan='2'><img width='50' src="./Public/upload/<?= $info[0]['photo'] ?>" /></td>
+					</tr>
+					<tr align='center'>
+						<td>积分</td>
+						<td>12580</td>
+						<td>等级</td>
+						<td>预备役</td>
+					</tr>
+				</table>
+			</div>
+			<?php
+				}
+			?>
+		</div>
+		<!--header头结束-->
+		
+		<!--导航条-->
+		<div id="nav">
+			<div class="middlediv">
+				<ul id="middlenav">
+					<li><a href="#">培训课程</a></li>
+					<span class="point"><li><a href="#">论坛</a></li></span>
+					<li><a href="#">兄弟连云课堂</a></li>
+					<li><a href="#">PHP视频</a></li>
+					<li><a href="#">Linux视频</a></li>
+					<li><a href="#">战地日记</a></li>
+				</ul>
+				<div id="fastroad">
+					<a href="#"><img src="./Public/images/fastroad.jpg"/></a>
+				</div>
+			</div>
+		</div>
+		<!--导航条结束-->

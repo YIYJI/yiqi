@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>帖子详情页</title>
+    <!--引入头部-->
+    <?php require "./View/Public/header.html"; ?>
+<div class="container">
+    <div id="search">
+        <div  style="padding:8px 0px 5px 50px">
+            <form action="./index.php?c=list&a=search" method="post">
+                <input style="width: 300px;color:darkgray" value="" name="neirong"/>&nbsp;&nbsp;
+                <input  class="button button-orange" type="submit" value="搜索">&nbsp;&nbsp;&nbsp;
+                热搜：
+                <a href="" class="search">php</a>&nbsp;&nbsp;
+                <a href="" class="search">php视频</a>&nbsp;&nbsp;
+                <a href="" class="search">php教程</a>&nbsp;&nbsp;
+                <a href="" class="search">php培训</a>&nbsp;&nbsp;
+            </form>&nbsp;
+        </div>
+    </div>
+    <!--搜索e-->
+    <!--面包屑s-->
+    <?php
+        //版块信息
+        $conn_t = new Model('type');
+        $t_info = $conn_t->find($post['tid']);
+    ?>
+    <div style="padding:5px 5px;font-size: 15px">
+        <a href="./index.php?c=index&a=index" class="blue"><?=$peizhiinfo['webname']?></a> >
+        <a href="./index.php?c=list&a=index&tid=<?=$post['tid']?>" class="blue"><?=$t_info['name']?></a> >
+        <?=$post['title']?>
+    </div>
+    <!--面包屑e-->
+    <!--页码s-->
+    <table class="page" width="100%" >
+        <tr>
+            <td class="f13">
+                共<?= $maxRows ?> 条数据 <?= $page ?>/<?= $maxPage ?> 页&nbsp;&nbsp;
+                <a href="./index.php?c=list&a=detail&id=<?=$post['id']?>&p=1" target="_self" onFocus="this.blur()"><button class="page_btn_current">首页</button></a>&nbsp;&nbsp;
+                <a href="./index.php?c=list&a=detail&id=<?=$post['id']?>&p=<?= $page-1 ?>" target="_self" onFocus="this.blur()"><button class="page_btn_current">上一页</button></a>&nbsp;&nbsp;
+                <a href="./index.php?c=list&a=detail&id=<?=$post['id']?>&p=<?= $page+1 ?>" target="_self" onFocus="this.blur()"><button class="page_btn_current">下一页</button></a>&nbsp;&nbsp;
+                <a href="./index.php?c=list&a=detail&id=<?=$post['id']?>&p=<?= $maxPage ?>" target="_self" onFocus="this.blur()"><button class="page_btn_current">尾页</button></a>
+            </td>
+            <td style="vertical-align: middle" width="146px">
+                <?php if($post['reply']==1){?><a href="./index.php?c=list&a=reply&pid=<?=$post['id']?>"><img src="./Public/images/reply.png" style="width: 68px;"></a><?php } ?>
+                <a href="./index.php?c=list&a=add&tid=<?=$post['tid']?>"><img src="./Public/images/fatie.png"></a>
+            </td>
+        </tr>
+    </table>
+    <!--页码e-->
+    <div id="topic_content">
+        <table width="100%">
+            <tr>
+                <td class="f13 topic_td"><b><?=$post['count']?></b><br/>阅读</td><td class="f13 topic_td"><b><?= $maxRows ?></b><br/>回复</td>
+                <td class="f18 blue bold topic_td" style="width: 80%"><?=$post['title']?><span class="gray f12">[复制链接]</span></td>
+            </tr>
+            <tr>
+                <td class="topic_td f12" colspan="2">
+                    <img src="./Public/images/guanli.png"><?=$author['nickName']?><br/><br/>
+                    <img src="./Public/upload/<?=$author['photo']?>" width="110px"><br/><br/>
+                    士官<br/>
+                    <img src="./Public/images/jindu.png"><br/>
+                    <img src="./Public/images/huiz.png"><img src="./Public/images/guanshuidashi.png"><img src="./Public/images/rexinhuiyuan.png"><img src="./Public/images/shequmingxing.png"><br/></br>
+                    <img src="./Public/images/guanz.png">加关注 <img src="./Public/images/fax.png">发消息
+                </td>
+                <td class="topic_td" style="background-color: #fff;">
+                    <table width="100%">
+                        <tr>
+                            <td class="f12">
+                                <span class="orange bold fr">楼主</span> 发表于:<?=date('Y-m-d H:i:s')?>
+                                <div class="sep10"></div>
+                                <div class="gray_hr"></div>
+                                <div class="sep10"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <?php if($post['elite']==1){?>
+                                <div class="hidden" ><img src="./Public/images/light.png" style="vertical-align: middle">本帖被管理员设置为精华</div>
+                                <?php } ?>
+                                <div class="sep10"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <!--<div class="hidden" ><img src="./Public/images/light.png" style="vertical-align: middle">本部分内容设定了隐藏，需要回复后才能看到</div>-->
+                                <?php if($post['reply']==0){?>
+                                    <div class="hidden" ><img src="./Public/images/light.png" style="vertical-align: middle">根据作者的设置，本帖不允许回复。</div>
+                                <?php } ?>
+                            </td>
+                        </tr>
+                        <tr  style="height: 150px;">
+                            <td>
+                                <?=$post['content']?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="share">
+                                    <img src="./Public/images/QQ.png">&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <img src="./Public/images/wechat.png">&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <img src="./Public/images/weibo.png">&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <img src="./Public/images/qzone.png">
+                                </div>
+                            </td>
+                        </tr>
+                        <!--<tr>-->
+                            <!--<td>-->
+                                <!--<div class="sep20"></div>-->
+                                <!--<div class="hidden"><img src="./Public/images/light.png"> 附件设置隐藏，需要回复后才能看到!</div><br/>-->
+                                <!--<div class="gray_board">共<span class="bold orange"> 3 </span>条评分，兄弟连粮票<span class="bold orange"> +4 </span></div>-->
+                                <!--<div class="sep10"></div>-->
+                                <!--<table style="width: 100%">-->
+                                    <!--<tr class="f13">-->
+                                        <!--<td style="width: 80px">-->
+                                            <!--<a href="" class="blue">we5f65</a>-->
+                                        <!--</td>-->
+                                        <!--<td style="width: 100px">-->
+                                            <!--兄弟连粮票<span class="orange bold">+4</span>-->
+                                        <!--</td>-->
+                                        <!--<td class="gray fr" >-->
+                                            <!--2011-11-03-->
+                                        <!--</td>-->
+                                    <!--</tr>-->
+                                    <!--<tr class="f13">-->
+                                        <!--<td>-->
+                                            <!--<a href="" class="blue">blueheart</a>-->
+                                        <!--</td>-->
+                                        <!--<td>-->
+                                            <!--兄弟连粮票<span class="orange bold">+4</span>-->
+                                        <!--</td>-->
+                                        <!--<td class="gray fr">-->
+                                            <!--2011-11-03-->
+                                        <!--</td>-->
+                                    <!--</tr>-->
+                                    <!--<tr class="f13">-->
+                                        <!--<td >-->
+                                            <!--<a href="" class="blue">bluehefef</a>-->
+                                        <!--</td>-->
+                                        <!--<td>-->
+                                            <!--兄弟连粮票<span class="orange bold">+4</span>-->
+                                        <!--</td>-->
+                                        <!--<td class="gray fr">-->
+                                            <!--2011-11-03-->
+                                        <!--</td>-->
+                                    <!--</tr>-->
+
+                                <!--</table>-->
+                            <!--</td>-->
+                        <!--</tr>-->
+                    </table>
+                </td>
+            </tr>
+            <!--回复列表s-->
+            <?php
+            if($replies){
+                foreach($replies as $reply){
+                    $r = new Model('userdetail');
+                    $r_author = $r->where("uid=".$reply['uid'])->select()[0];
+            ?>
+                <tr>
+                    <td class="topic_td f12" colspan="2">
+                        <img src="./Public/images/guanli.png"><?=$r_author['nickName']?><br/><br/>
+                        <img src="./Public/upload/<?=$r_author['photo']?>" width="110px"><br/><br/>
+                        士官<br/>
+                        <img src="./Public/images/jindu.png"><br/>
+                        <img src="./Public/images/rexinhuiyuan.png"><img src="./Public/images/shequmingxing.png"><br><br/>
+                        <img src="./Public/images/guanz.png">加关注 <img src="./Public/images/fax.png">发消息
+                    </td>
+                    <td class="topic_td" style="background-color: #fff;">
+                        <table width="100%">
+                            <tr>
+                                <td class="f12">
+                                     发表于:<?=date('Y-m-d H:i:s',$reply['ctime'])?>
+                                    <span class="orange bold fr"><?=$reply['position']==1?"沙发":"#".$reply['position']."楼"?></span>
+                                    <div class="sep10"></div>
+                                    <div class="gray_hr"></div>
+                                    <div class="sep10"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="f13">
+                                    <?=$reply['content']?>
+                                </td>
+                            </tr>
+                            <tr  style="height: 230px;">
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            <?php
+                    }
+                }
+            ?>
+            <!--回复列表s-->
+        </table>
+        </div>
+        <!--帖子e-->
+    <!--页码s-->
+    <?php
+        if($maxRows>0)
+    {?>
+    <table>
+        <tr>
+            <td class="f13">
+                共<?= $maxRows ?> 条数据 <?= $page ?>/<?= $maxPage ?> 页&nbsp;&nbsp;
+                <a href="./index.php?c=list&a=detail&id=<?=$post['id']?>&p=1" target="_self" onFocus="this.blur()"><button class="page_btn_current">首页</button></a>&nbsp;&nbsp;
+                <a href="./index.php?c=list&a=detail&id=<?=$post['id']?>&p=<?= $page-1 ?>" target="_self" onFocus="this.blur()"><button class="page_btn_current">上一页</button></a>&nbsp;&nbsp;
+                <a href="./index.php?c=list&a=detail&id=<?=$post['id']?>&p=<?= $page+1 ?>" target="_self" onFocus="this.blur()"><button class="page_btn_current">下一页</button></a>&nbsp;&nbsp;
+                <a href="./index.php?c=list&a=detail&id=<?=$post['id']?>&p=<?= $maxPage ?>" target="_self" onFocus="this.blur()"><button class="page_btn_current">尾页</button></a>
+
+            </td>
+        </tr>
+    </table>
+    <?php
+        }
+    ?>
+    <!--页码e-->
+    <div class="sep10"></div>
+    <!--判断是否登录了-->
+    <?php
+        if(isset($_SESSION['uid'])){
+    ?>
+    <div id="new">
+        <div class="th">快速发帖</div>
+            <div id="fast_fatie" class="f12" style="color:#666;background-color: #fff">
+                <form action="./index.php?c=list&a=insert&tid=<?=$post['tid']?>" method="post">
+                    <div class="topic_td" style="width: 155px;line-height:280px;float:left"><img width="110px" src="./Public/upload/<?= $info[0]['photo'] ?>" /></div>
+                    <div  class="basic-grey" style="width:500px;text-align: left">
+                        <form action="./index.php?c=center&a=update" method="post">
+                            <label>
+                                <span>标题：</span>
+                                <input  type="text" name="title" value="" />
+                            </label>
+                            <label>
+                                <span>内容：</span>
+                                <textarea   type="text" name="content" value=""></textarea>
+                            </label>
+                            <label>
+                                <span>允许回复：</span>
+                                <select name="reply">
+                                    <option value="1">允许</option>
+                                    <option value="0">禁止</option>
+                                </select>
+                            </label>
+                            <label>
+                                <span>&nbsp;</span>
+                                <input type="submit" class="button button-orange big" value="发帖" />
+                            </label>
+
+                        </form>
+                    </div>
+
+                </form>
+                <div style="clear: both"></div>
+            </div>
+        </div>
+    <?php } ?>
+    </div>
+    <?php require "./View/Public/footer.html"; ?>
+</div>
+</body>
+</html>

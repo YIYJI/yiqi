@@ -1,0 +1,17 @@
+<!--底部s-->
+<?php
+    $f = new Model('config');
+    $res = $f->find(1);
+    //页面执行时间
+    list ($usec, $sec) = explode(" ", microtime());
+    $time  = round((((float) $usec + (float) $sec))/100000000000,5);
+?>
+<div class="sep20"></div>
+<div id="footer" class="f12">
+    联系我们 | 无图版 | 手机浏览 | 清除Cookies
+    <div class="sep10"></div>
+    <span class="f11">Powered by phpwind v8.7 Copyright Time now is:<?=date("m-d H:i",time())?><div class="sep10"></div>
+        ©2006 - 2017 Copyright <a href="./index.php?c=index&a=index"><?= $res['webname']?></a> 版权所有  <?= $res['copy']?> Total <?=$time?>(s) query 5,<img src="./Public/images/pic.gif"></span>
+</div>
+<div class="sep20"></div>
+<!--底部e-->

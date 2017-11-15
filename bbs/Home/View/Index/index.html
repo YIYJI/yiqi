@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <!--引入头部-->
+    <?php require "./View/Public/header.html"; ?>
+<div class="container">
+    <!--搜索s-->
+    <div id="search">
+        <div  style="padding:8px 0px 5px 50px">
+            <form action="./index.php?c=list&a=search" method="post">
+                <input style="width: 300px;color:darkgray" value="" name="neirong"/>&nbsp;&nbsp;
+                <input  class="button button-orange" type="submit" value="搜索">&nbsp;&nbsp;&nbsp;
+                热搜：
+                <a href="" class="search">php</a>&nbsp;&nbsp;
+                <a href="" class="search">php视频</a>&nbsp;&nbsp;
+                <a href="" class="search">php教程</a>&nbsp;&nbsp;
+                <a href="" class="search">php培训</a>&nbsp;&nbsp;
+            </form>
+
+        </div>
+    </div>
+    <!--搜索e-->
+    <div id="pic">
+        <a href="" ><img src="./Public/images/Lunbo.png" width="100%"></a>
+    </div>
+    <div class="sep20"></div>
+    <div id="msg">
+        <div id="tongzhi">
+            <span class="green f13 bold"><img src="./Public/images/tongzhi.png"/>2017兄弟连PHP课程再次升级!</span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="red f13 bold">兄弟连Linux课程体系2017年全面升级!</span>&nbsp;&nbsp;
+            <span class="blue f13 bold">HTML5就业班，包吃、包住、包就业！</span>&nbsp;&nbsp;
+            <span class="orange f13 bold">兄弟连视频教程免费下载地址汇总!</span>
+        </div>
+        <div class="sep5"></div>
+        <div id="">
+            <div class="f12" style="float: left">今日:<b>5</b> | 昨日:<b>45</b> | 最高日:116787 | 帖子:1448714 | 会员:424172 | 新会员:dvzeb0</div>
+            <div style="float: right">
+                <img src="./Public/images/qq_n.png">&nbsp;
+                <img src="./Public/images/sina_n.png">&nbsp;
+                <span class="f12">新帖&nbsp;精华</span>
+            </div>
+        </div>
+    </div>
+    <!--板块s-->
+    <?php
+
+
+	    foreach($sec as $k=>$v){
+
+        //判断是否为父分区
+        if($v['pid']==0 && $v['status']==1){
+        ?>
+    <div class="bkbox">
+            <div class="th"><?= $v['name'] ?></div>
+        <div class="neirong">
+            <?php
+			    //查询指定父类的子版块
+			    $sec1 = $conn->where('pid='.$v['id'])->select();
+
+                //遍历子版块信息
+                if($sec1){foreach($sec1 as $key=>$val){
+            if( $val['status']==1){
+
+                //总帖子数
+                $conn2 = new Model('post');
+                $count = $conn2->query("select count(*) as count from post where tid=".$val['id'])[0]['count'];
+                //最后发帖时间
+                $last = $conn2->query("select * from post where tid=".$val['id']." order  by ctime desc limit 1")[0]['ctime'];
+
+            ?>
+                <div class="bankuai">
+                    <div class="tu">
+                        <a href="./index.php?c=list&a=index&tid=<?= $val['id'] ?>"><img src="../Admin/Public/upload/<?=$val['blogo']?>" width="50px"/></a>
+                    </div>
+                    <div class="wen">
+                     <ul>
+                            <li><a href="./index.php?c=list&a=index&tid=<?= $val['id'] ?>" class="dbt"><?= $val['name'] ?></a><!--<span>（今日14）</span>--></li>
+                            <li>总帖子数：<?=$count?></li>
+                            <li>最后发帖:<?php if($last>0){echo date("Y-m-d H:i:s",$last);}else{echo "无";}?></li>
+                        </ul>
+                 </div>
+                </div>
+            <?php }} }?>
+        </div>
+    </div>
+        <?php
+			    }
+			}
+		?>
+    <!--板块e-->
+    <div style="clear: both"></div>
+    <!--友情链接s-->
+    <div class="sep10"></div>
+    <div id="link" >
+        <div class="th">友情链接</div>
+        <div style="padding: 10px;background: #fff;">
+            <?php foreach($links as $link){
+                echo "<a href='{$link['url']}' target='_blank' ><img src='../Admin/Public/upload/{$link["logo"]}' width='100px'></a>";
+
+            }
+            ?>
+        </div>
+    </div>
+    <!--友情链接e-->
+    <!--在线s-->
+    <div class="sep10"></div>
+    <div id="info">
+        <div class="th">在线用户<span style="font-weight: normal;">-共 1261 人在线，8位会员，1253位访客，最多4931人发生在 2013-06-07 5:37</span></div>
+        <div id="level">
+            <p>
+                <img src="./Public/images/siling.gif">司令（管理员）&nbsp;&nbsp;&nbsp;
+                <img src="./Public/images/lianzhang.gif">连长（超版）&nbsp;&nbsp;&nbsp;
+                <img src="./Public/images/paizhang.gif">排长（版主）&nbsp;&nbsp;&nbsp;
+                <img src="./Public/images/jiaoguan.gif">教官（版主）&nbsp;&nbsp;&nbsp;
+                <img src="./Public/images/xinbing.gif">新兵（版主）&nbsp;&nbsp;&nbsp;
+                <img src="./Public/images/putong.gif">普通（版主）&nbsp;&nbsp;&nbsp;
+            </p>
+
+        </div>
+    </div>
+    <!--在线e-->
+    <?php require "./View/Public/footer.html"; ?>
+
+</div>
+</body>
+</html>

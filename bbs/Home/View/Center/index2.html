@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" href="./Public/css/style.css" rel="stylesheet"/>
+    <title>个人中心</title>
+    <?php require "./View/Public/header.html"; ?>
+    <div class="container">
+        <div class="sep20"></div>
+        <div id="login">
+            <b>个人中心</b>
+            <div style="line-height: 1px;border: 1px solid #ddd;"></div>
+            <div id="login_form" align="center">
+                <form action="./index.php?c=center&a=doPhoto" method="post">
+                    <table width="380" border="0" cellspacing="15">
+                        <tr>
+                            <td class="you">头  像</td>
+                            <td class="zuo"><img src="./Public/upload/<?= $res[0]['photo'] ?>" width="100px"/></td>
+                        </tr>
+                        <tr>
+                            <td class="you"></td>
+                            <td class="zuo"><a href="./index.php?c=center&a=photo"><button class="button button-silver" type="button">修改头像</button></a> </td>
+                        </tr>
+                        <tr style="text-align:center;">
+                            <td class="btn" colspan="2">
+                                <input type="submit" value="修改" class="button button-blue"/>
+                                <input type="reset" value="重置" class="button button-silver"/>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    </body>
+</html>

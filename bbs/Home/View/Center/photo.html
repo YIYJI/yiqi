@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" href="./Public/css/style.css" rel="stylesheet"/>
+    <title>修改头像</title>
+    <?php require "./View/Public/header.html"; ?>
+    <div class="container">
+        <div style="padding:5px 5px;font-size: 15px">
+            <a href="./index.php?c=index&a=index" class="blue"><?=$peizhiinfo['webname']?></a> >
+            修改头像
+        </div>
+        <div id="login">
+            <b>修改头像</b>
+            <div style="line-height: 1px;border: 1px solid #ddd;"></div>
+            <div id="login_form" align="center">
+                <form action="./index.php?c=center&a=doPhoto" method="post" enctype="multipart/form-data">
+                    <table width="380" border="0" cellspacing="15">
+                        <tr style="text-align:center;">
+                            <td class="zuo"><img src="./Public/upload/<?= $res[0]['photo'] ?>" width="100px"/></td>
+                        </tr>
+                        <tr style="text-align:center;">
+                            <td class="btn">
+                                <input type="file" name="photo"/>
+                            </td>
+                        </tr>
+                        <tr style="text-align:center;">
+                            <td class="btn">
+                                <input type="submit" value="确认修改" class="button button-blue"/>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <?php require "./View/Public/footer.html"; ?>
+
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" href="./Public/css/style.css" rel="stylesheet"/>
+    <title>修改密码</title>
+    <?php require "./View/Public/header.html"; ?>
+    <div class="container">
+        <div style="padding:5px 5px;font-size: 15px">
+            <a href="./index.php?c=index&a=index" class="blue"><?=$peizhiinfo['webname']?></a> >
+            <a href='./index.php?c=center&a=index' class="blue">个人中心</a> >
+            修改密码
+        </div>
+        <div id="login">
+            <b>修改密码</b>
+            <div style="line-height: 1px;border: 1px solid #ddd;"></div>
+            <div  class="basic-grey" style="width:500px;">
+                <form action="./index.php?c=center&a=doPsw" method="post">
+                    <label>
+                        <span>原密码：</span>
+                        <div class="sep10"></div>
+                        <input  type="password" name="pre_psw" value="" />
+                    </label>
+                    <div class="sep20"></div>
+                    <label>
+                        <span>新密码：</span>
+                        <input  type="password" name="psw" value="" />
+                    </label>
+                    <div class="sep20"></div>
+                    <label>
+                        <span>重复新密码：</span>
+                        <input  type="password" name="confirm" value="" />
+                    </label>
+                    <div class="sep20"></div>
+                    <div class="sep20"></div>
+                    <label>
+                        <span>&nbsp;</span>
+                        <input type="submit" class="button button-orange big" value="确认修改" />
+                    </label>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    </body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>LAMP兄弟连-列表页</title>
+		<link rel="stylesheet" href="./Public/css/detail.css">
+	</head>
+	<body>
+		<!-- 引入头部文件 -->
+		<?php require "./View/Public/head.html";  ?>
+		
+		<!--大盒子-->
+		<div id="big">
+			<!--顶部搜索条-->
+			<div id="search">
+				<form action="#" method="post">
+					<input type="text" placeholder="让学习成为一种习惯!" name=""/>
+					<select name="">
+						<option value="1">帖子</option>
+						<option value="2">日志</option>
+						<option value="3">用户</option>
+						<option value="4">板块</option>
+					</select>
+					<input type="submit" value="搜索" class="button button-orange"/>
+				</form>
+				<ul id="hot">
+					<li>热搜：</li>
+					<li class="red">php</li>
+					<li class="red">php视频</li>
+					<li class="red">php教程</li>
+				</ul>
+				<div id="guanzhu">
+					<ul>
+						<li><a href="#"><img src="./Public/images/sina_n.png" title="关注新浪微博"/></a></li>
+						<li><a href="#"><img src="./Public/images/qq_n.png" title="添加到QQ"/></a></li>
+						<li><a href="#"><img src="./Public/images/6.gif" title="添加笔记"/></a></li>
+						<li><a href="#"><img src="./Public/images/21.gif" title="百度浏览"/></a></li>
+						<li><a href="#"><img src="./Public/images/medal.png" title="排行榜"/></a></li>
+					</ul>
+				</div>
+			</div>
+			<!--顶部搜索条结束-->
+			
+			<!--引导层开始-->
+			<div id="yindao">
+				<p><a href="#">LAMP兄弟连</a> > <a href="#">PHP技术交流</a> > <a href="#">PHP常用的万能分页类，非常好用..</a></p>
+			</div>
+			<!--引导层结束-->
+			
+			<!--分页开始-->
+			<div id="list">
+				<div id="page">
+					<div id="pagefy">
+						<ul>
+							<li><a href="#">< 返回列表</a></li>
+							<li><a href="#">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">5</a></li>
+							<li><a href="#">6</a></li>
+							<li><a href="#">…537</a></li>
+							<li><a href="#">下一页 ></a></li>
+						</ul>
+					</div>
+					<div id="fatie">
+						<a href="#"><button image="./Public/images/fatie.png">回复</button></a>
+						<a href="#"><button image="./Public/images/fatie.png">发帖</button></a>
+					</div>
+				</div>
+			</div>
+			<!--分页结束-->
+			
+			<!--楼主帖子详情结束-->
+			<div id="bigdetail">
+				<div id="detail">
+					<div id="lzinfo">
+						<div id="read">
+							<p>29585</p>
+							<p>阅读</p>
+						</div>
+						<div id="reply">
+							<p>641</p>
+							<p>回复</p>
+						</div>
+						<div id="lztoux">
+							<div id="uname">
+								<a href="#">狼牙</a>
+							</div>
+							<div id="utoux">
+								<img src="./Public/images/utoux.png"/>
+							</div>
+							<div id="ulevel">
+								<a href="#">上士</a><br/>
+								<img src="./Public/images/jindu.png"/>
+							</div>
+							<div id="uhuiz">
+								<a href="#"><img src="./Public/images/new1.gif"/></a>
+								<a href="#"><img src="./Public/images/new2.gif"/></a>
+								<a href="#"><img src="./Public/images/new4.gif"/></a>
+								<a href="#"><img src="./Public/images/new5.gif"/></a>
+								<a href="#"><img src="./Public/images/new6.gif"/></a>
+								<a href="#"><img src="./Public/images/medal1.gif"/></a>
+								<a href="#"><img src="./Public/images/medal3.gif"/></a>
+								<a href="#"><img src="./Public/images/medal4.gif"/></a>
+								<a href="#"><img src="./Public/images/medal5.gif"/></a>
+								<a href="#"><img src="./Public/images/medal7.gif"/></a>
+								<a href="#"><img src="./Public/images/medal9.gif"/></a>
+								<a href="#"><img src="./Public/images/medal10.gif"/></a>
+								<a href="#"><img src="./Public/images/new1.gif"/></a>
+								<a href="#"><img src="./Public/images/new2.gif"/></a>
+								<a href="#"><img src="./Public/images/new4.gif"/></a>
+								<a href="#"><img src="./Public/images/new5.gif"/></a>
+								<a href="#"><img src="./Public/images/new6.gif"/></a>
+								<a href="#"><img src="./Public/images/medal1.gif"/></a>
+								<a href="#"><img src="./Public/images/medal3.gif"/></a>
+								<a href="#"><img src="./Public/images/medal4.gif"/></a>
+								<a href="#"><img src="./Public/images/medal5.gif"/></a>
+								<a href="#"><img src="./Public/images/medal7.gif"/></a>
+								<a href="#"><img src="./Public/images/medal9.gif"/></a>
+								<a href="#"><img src="./Public/images/medal10.gif"/></a>
+							</div>
+							<div id="uguanz">
+								<a href="#" class="jia">加关注</a>
+								<a href="#" class="fa">发消息</a>
+							</div>
+						</div>
+					</div>
+					<div id="tzinfo">
+						<div id="tzbiaot">
+							<p>[PHP]PHP常用的万能分页类，非常好用的<span><a href="#">[复制链接]</a></span></p>
+						</div>
+						<div id="tzxiangq">
+							<div id="fttime">
+								<p>楼主 发表于:2016-02-19</p>
+								<ul>
+									<li><a href="#">只看楼主</a></li>
+									<li><a href="#">倒叙阅读</a></li>
+									<li><a href="#">使用道具</a></li>
+								</ul>
+							</div>
+							<div id="tzneir">
+								<p>PHP常用的万能分页类，非常好用的PHP常用的万能分页类，非常好用的</p>
+							</div>
+							<div id="tzfenx">
+								<a href="#"><img src="./Public/images/wechat.png"/></a>
+								<a href="#"><img src="./Public/images/QQ.png"/></a>
+								<a href="#"><img src="./Public/images/qzone.png"/></a>
+								<a href="#"><img src="./Public/images/weibo.png"/></a>
+							</div>
+							<div id="tzyinc">
+								<div></div><p>附件设置隐藏，需要回复后才能看到！</p>
+							</div>
+							<div id="tzpingf">
+								<p>共<span>2</span>条评分，兄弟连粮票<span>+10</span></p>
+							</div>
+							<div id="tzpingfxx">
+								<div class='tzpingfxxleft'>
+									<span class='tzjfname'><a href='#'>姜秀明</a></span> <span style="font-size:15px;">兄弟连粮票</span> <span class='tzjfnumber'>+5</span>
+								</div>
+								<div class='tzpingfxxright'>
+									<span class='tzjfname'>2016-10-12 11:02:12</span>
+								</div>
+							</div>
+							<div id="tzpingfxx">
+								<div class='tzpingfxxleft'>
+									<span class='tzjfname'><a href='#'>吴秀波</a></span> <span style="font-size:15px;">兄弟连粮票</span> <span class='tzjfnumber'>+5</span>
+								</div>
+								<div class='tzpingfxxright'>
+									<span class='tzjfname'>2016-10-12 11:02:12</span>
+								</div>
+							</div>
+							<div id="tzpingfxx">
+								<div class='tzpingfxxleft'>
+									<span class='tzjfname'><a href='#'>黄&nbsp;渤</a></span> <span style="font-size:15px;">兄弟连粮票</span> <span class='tzjfnumber'>+5</span>
+								</div>
+								<div class='tzpingfxxright'>
+									<span class='tzjfname'>2016-10-12 11:02:12</span>
+								</div>
+							</div>
+							<div class="tzhuif">
+								<a href=''><img src='./Public/images/huifu.jpg'/> <span>回复</span></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--楼主帖子详情结束-->
+			
+			<!--回帖信息开始-->
+			<div id='detail'>
+				<div id="lzinfo">
+						<div id="lztoux">
+							<div id="uname">
+								<a href="#">小新</a>
+							</div>
+							<div id="utoux">
+								<img src="./Public/images/1506.jpg" width="118"/>
+							</div>
+							<div id="ulevel">
+								<a href="#">下士</a><br/>
+								<img src="./Public/images/jindu.png"/>
+							</div>
+							<div id="uhuiz">
+								<a href="#"><img src="./Public/images/new1.gif"/></a>
+								<a href="#"><img src="./Public/images/new2.gif"/></a>
+								<a href="#"><img src="./Public/images/new4.gif"/></a>
+							</div>
+							<div id="uguanz">
+								<a href="#" class="jia">加关注</a>
+								<a href="#" class="fa">发消息</a>
+							</div>
+						</div>
+					</div>
+					<div id="tzinfo">
+						<div id="tzxiangq">
+							<div id="fttime">
+								<p>沙发 发表于:2016-02-19</p>
+								<ul>
+									<li><a href="#">只看该作者</a></li>
+								</ul>
+							</div>
+							<div id="tzneir">
+								<p>我就是过来炫耀徽章的！！</p>
+							</div>
+							
+							<div class="tzhuif">
+								<a href=''><img src='./Public/images/huifu.jpg'/> <span>回复</span></a>
+							</div>
+						</div>
+					</div>
+				<div class="htright">
+				
+				</div>
+			</div>
+			<!--回帖信息结束-->
+			
+			<!--分页开始-->
+			<div id="list">
+				<div id="page">
+					<div id="pagefy">
+						<ul>
+							<li><a href="#">< 返回列表</a></li>
+							<li><a href="#">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">5</a></li>
+							<li><a href="#">6</a></li>
+							<li><a href="#">…537</a></li>
+							<li><a href="#">下一页 ></a></li>
+						</ul>
+					</div>
+					<div id="fatie">
+						<a href="#"><button image="./Public/images/fatie.png">回复</button></a>
+						<a href="#"><button image="./Public/images/fatie.png">发帖</button></a>
+					</div>
+				</div>
+			</div>
+			<!--分页结束-->
+			
+		</div>
+		
+		
+		
+		<div id="clear"></div>
+		<!--大盒子结束-->
+			
+		<!-- 引入脚部文件 -->
+		<?php require "./View/Public/foot.html"; ?>
+	</body>
+</html>

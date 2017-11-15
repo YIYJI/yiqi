@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>发帖</title>
+    <link href="./Public/umeditor/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="./Public/umeditor/third-party/jquery.min.js"></script>
+    <script type="text/javascript" src="./Public/umeditor/third-party/template.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="./Public/umeditor/umeditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="./Public/umeditor/umeditor.min.js"></script>
+    <script type="text/javascript" src="./Public/umeditor/lang/zh-cn/zh-cn.js"></script>
+    <!--引入头部-->
+    <?php require "./View/Public/header.html"; ?>
+<div class="container">
+    <div id="search">
+        <div  style="padding:8px 0px 5px 50px">
+            <input style="width: 300px;color:darkgray" value="让学习成为一种习惯"/>
+            <select name="search">
+                <option selected>帖子</option>
+                <option>用户</option>
+                <option>板块</option>
+            </select>
+            &nbsp;&nbsp;
+            <button  class="button button-orange">搜索</button>&nbsp;&nbsp;&nbsp;
+
+            热搜：
+            <a href="" class="search">php</a>&nbsp;&nbsp;
+            <a href="" class="search">php视频</a>&nbsp;&nbsp;
+            <a href="" class="search">php教程</a>&nbsp;&nbsp;
+            <a href="" class="search">php培训</a>&nbsp;&nbsp;
+        </div>
+    </div>
+    <!--搜索e-->
+    <?php
+        //版块信息
+        $conn_t = new Model('type');
+        $t_info = $conn_t->find($_GET['tid']);
+    ?>
+    <div style="padding:5px 5px;font-size: 15px">
+        <a href="./index.php?c=index&a=index" class="blue"><?=$peizhiinfo['webname']?></a> >
+        <a href="./index.php?c=list&a=index&tid=<?=$_GET['tid']?>" class="blue"><?=$t_info['name']?></a> >
+        发表帖子
+    </div>
+    <div id="fabiao" style="background-color: #fff;border-bottom: 1px solid #ddd;">
+        <button style="padding:10px;background-color: #f0ffff;border:1px solid #ddd;border-bottom: 1px solid #fff;" >发表主题</button>
+    </div>
+    <div id="new" style="padding: 10px;background-color: #fff;font-size: 15px;">
+        <form action="./index.php?c=list&a=insert&tid=<?=$_GET['tid']?>" method="post">
+            <div class="sep20"></div>
+            <div id="title" style="height: 30px;">
+                帖子标题: <input type="text" name="title" style="width:40%;height:30px;">
+            </div>
+            <div class="sep20"></div>
+            <script type="text/plain" name="content" id="myEditor" style="width:100%;height:400px;"></script>
+            <div class="sep20"></div>
+            帖子是否允许其他会员回复：<select name="reply">
+                <option value="1">允许</option>
+                <option value="0">禁止</option>
+            </select>
+            <div class="sep20"></div>
+            <div class="sep20"></div>
+            <button type="submit" class="button button-orange big">发布帖子</button>
+            <div class="sep20"></div>
+        </form>
+    </div>
+
+</div>
+<?php require "./View/Public/footer.html"; ?>
+</div>
+</body>
+</html>
+
+<script type="text/javascript">
+    //实例化编辑器
+    var um = UM.getEditor('myEditor');
+    um.addListener('blur',function(){
+        $('#focush2').html('编辑器失去焦点了')
+    });
+    um.addListener('focus',function(){
+        $('#focush2').html('')
+    });
+</script>

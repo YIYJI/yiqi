@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" href="./Public/css/style.css" rel="stylesheet"/>
+    <title>用户登录</title>
+    <?php require "./View/Public/header.html"; ?>
+    <div class="container">
+        <div class="sep20"></div>
+        <div id="login">
+            <b>用户登录</b>
+            <div style="line-height: 1px;border: 1px solid #ddd;"></div>
+            <div id="login_form">
+                <table width="100%">
+                    <tr>
+                        <!--left s-->
+                        <td width="60%">
+                            <div  class="basic-grey" style="float: left">
+                                <form action="./index.php?c=login&a=doLogin" method="post">
+                                    <label>
+                                        <span>用户名：</span>
+                                        <input  type="text" name="userName" />
+                                    </label>
+
+                                    <label>
+                                        <span>密码：</span>
+                                        <input  type="password" name="password" />
+                                    </label>
+                                    <label>
+                                        <span>&nbsp;</span>
+                                        <input type="submit" class="button button-silver big" value="登录" />
+                                    </label>
+                                </form>
+                            </div>
+                        </td>
+                        <!--left e-->
+                        <!--right s-->
+                        <td>
+                            <div id="right" style="float: right;width:40%  " >
+                                还没有账号？
+                                <div class="sep10"></div>
+                                <a href="./index.php?c=register&a=index"><button class="button button-orange big">注册</button></a>
+                            </div>
+                        </td>
+                        <!--right e-->
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </body>
+</html>
